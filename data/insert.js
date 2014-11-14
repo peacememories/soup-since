@@ -1,13 +1,10 @@
 var forEach = Array.prototype.forEach;
 
-var actionBars = document.querySelectorAll(".actionbar");
-
-forEach.call(actionBars, function(actionBar) {
+function addToActionBar(actionBar) {
   var first = actionBar.querySelector(".first");
 
-  var permalink = actionBar.querySelector(".permalink");
-  var timestamp = permalink.querySelector("a").getAttribute("href").match(/\/post\/([0-9]{9})/)[1];
-  var link = "?since=" + timestamp;
+  var timestamp = Timestamp.get(actionBar);
+  var link = "?since=" + (Timestamp.correct(timestamp));
 
   var linkText = document.createTextNode(">");
   var linkElement = document.createElement("a");
@@ -24,10 +21,29 @@ forEach.call(actionBars, function(actionBar) {
 
   linkElement.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-  })
+  });
+}
+
+function addToChildren(node) {
+  var actionBars = node.querySelectorAll(".actionbar");
+  forEach.call(actionBars, addToActionBar);
+}
+
+var observer = new MutationObserver(function(changeSets) {
+  changeSets.forEach(function(changeSet) {
+    forEach.call(changeSet.addedNodes, addToChildren);
+  });
 });
 
+var batchList = document.querySelector("#more_history");
+
+if(batchList !== null) {
+  addToChildren(batchList);
+  observer.observe(batchList, {childList: true});
+}
+
 self.port.on("detach", function() {
+  observer.disconnect();
   var elements = document.querySelectorAll(".actionbar .since");
   forEach.call(elements, function(element) {
     element.parentNode.removeChild(element);
