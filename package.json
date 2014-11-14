@@ -1,0 +1,9 @@
+{
+  "name": "soup-since",
+  "title": "Soup Since",
+  "id": "jid1-nPYLDF4KrWAauA",
+  "description": "Look only at soup entries that happened after this one",
+  "author": "Algobat",
+  "license": "MPL 2.0",
+  "version": "0.1"
+}
