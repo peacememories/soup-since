@@ -9,5 +9,10 @@ window.Timestamp = {
     var permaLink = node.querySelector(".permalink a");
     return extractTimestamp(permaLink.getAttribute("href"));
   },
-  correct: function(timestamp) {return timestamp + 1}
+  correct: function(timestamp) {return timestamp + 1},
+  url: function(timestamp) {
+    var url = new URL(window.location);
+    url.searchParams.append("until", timestamp);
+    return url;
+  }
 }
