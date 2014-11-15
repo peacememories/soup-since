@@ -4,7 +4,8 @@ function addToActionBar(actionBar) {
   var first = actionBar.querySelector(".first");
 
   var timestamp = Timestamp.get(actionBar);
-  var link = "?since=" + (Timestamp.correct(timestamp));
+  timestamp = Timestamp.correct(timestamp);
+  var link = Timestamp.url(timestamp);
 
   var linkText = document.createTextNode(">");
   var linkElement = document.createElement("a");
