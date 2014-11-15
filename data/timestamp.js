@@ -1,18 +1,23 @@
 var timestampRegEx = /\/post\/([0-9]{9})/;
 
-function extractTimestamp(str) {
-  return parseInt(timestampRegEx.exec(str)[1]);
+var Timestamp = function(timestamp) {
+  this.timestamp = timestamp;
 }
 
-window.Timestamp = {
-  get: function(node) {
-    var permaLink = node.querySelector(".permalink a");
-    return extractTimestamp(permaLink.getAttribute("href"));
-  },
-  correct: function(timestamp) {return timestamp + 1},
-  url: function(timestamp) {
-    var url = new URL(window.location);
-    url.searchParams.append("until", timestamp);
-    return url;
-  }
+Timestamp.prototype.getSinceURL = function() {
+  var url = new URL(window.location);
+  url.searchParams.append("until", this.timestamp+1);
+  return url;
 }
+
+Timestamp.fromPermaLink = function(link) {
+  var timestamp = parseInt(timestampRegEx.exec(link)[1]);
+  return new Timestamp(timestamp);
+}
+
+Timestamp.fromDOM = function(node) {
+  var permaLink = node.querySelector(".permalink a");
+  return Timestamp.fromPermaLink(permaLink.href);
+}
+
+window.Timestamp = Timestamp;

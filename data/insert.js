@@ -3,9 +3,8 @@ var forEach = Array.prototype.forEach;
 function addToActionBar(actionBar) {
   var first = actionBar.querySelector(".first");
 
-  var timestamp = Timestamp.get(actionBar);
-  timestamp = Timestamp.correct(timestamp);
-  var link = Timestamp.url(timestamp);
+  var timestamp = Timestamp.fromDOM(actionBar);
+  var link = timestamp.getSinceURL();
 
   var linkText = document.createTextNode(">");
   var linkElement = document.createElement("a");
@@ -13,8 +12,8 @@ function addToActionBar(actionBar) {
 
   linkElement.appendChild(linkText);
   linkElement.classList.add("since");
-  linkElement.setAttribute("href", link);
-  linkElement.setAttribute("title", "Show all posts after this one");
+  linkElement.href = link;
+  linkElement.title = "Show all posts after this one";
 
   listElement.appendChild(linkElement);
 
