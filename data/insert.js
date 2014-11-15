@@ -5,7 +5,7 @@ function addToActionBar(actionBar) {
 
   var timestamp = Timestamp.get(actionBar);
   timestamp = Timestamp.correct(timestamp);
-  var link = Timestamp.url(timestamp));
+  var link = Timestamp.url(timestamp);
 
   var linkText = document.createTextNode(">");
   var linkElement = document.createElement("a");
