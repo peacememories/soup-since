@@ -13,7 +13,7 @@ function addToActionBar(actionBar) {
   linkElement.appendChild(linkText);
   linkElement.classList.add("since");
   linkElement.href = link;
-  linkElement.title = "Show all posts after this one";
+  linkElement.title = self.options.titleString;
 
   listElement.appendChild(linkElement);
 
