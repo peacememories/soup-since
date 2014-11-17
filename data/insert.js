@@ -1,9 +1,8 @@
 var forEach = Array.prototype.forEach;
 
-function addToActionBar(actionBar) {
+function addToActionBar(actionBar, timestamp) {
   var first = actionBar.querySelector(".first");
 
-  var timestamp = Timestamp.fromDOM(actionBar);
   var link = timestamp.getSinceURL();
 
   var linkText = document.createTextNode(">");
@@ -25,8 +24,10 @@ function addToActionBar(actionBar) {
 }
 
 function addToChildren(node) {
-  var actionBars = node.querySelectorAll(".actionbar");
-  forEach.call(actionBars, addToActionBar);
+  var posts = node.querySelectorAll(".post");
+  forEach.call(posts, function(post) {
+    addToActionBar(post.querySelector(".actionbar"), Timestamp.fromPrevious(post));
+  });
 }
 
 var observer = new MutationObserver(function(changeSets) {
