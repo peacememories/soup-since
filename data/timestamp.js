@@ -8,7 +8,7 @@ var Timestamp = function(timestamp) {
 
 Timestamp.prototype.getSinceURL = function() {
   var url = new URL(window.location);
-  url.searchParams.append("until", this.timestamp);
+  url.searchParams.append("since", this.timestamp);
   return url;
 }
 
