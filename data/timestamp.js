@@ -7,8 +7,16 @@ var Timestamp = function(timestamp) {
 }
 
 Timestamp.prototype.getSinceURL = function() {
-  var url = new URL(window.location);
-  url.searchParams.append("since", this.timestamp);
+  // distinction for friends (www.soup.io/friends) 
+  // or user (USER.soup.io) soup
+  urlarray = window.location.toString();
+  urlarray = urlarray.split('/');
+  if (urlarray[2].substring(0,4) == "www.") {
+    var url = new URL(window.location);
+    url.searchParams.append("since", this.timestamp);
+  } else {
+    url	 = new URL(urlarray[0] +"//"+ urlarray[2] +"/since/"+ this.timestamp);
+  }
   return url;
 }
 
