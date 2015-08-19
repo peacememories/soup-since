@@ -13,7 +13,7 @@ Timestamp.prototype.getSinceURL = function() {
   urlarray = urlarray.split('/');
   if (urlarray[2].substring(0,4) == "www.") {
     var url = new URL(window.location);
-    url.searchParams.append("since", this.timestamp);
+    url.searchParams.set("since", this.timestamp);
   } else {
     url	 = new URL(urlarray[0] +"//"+ urlarray[2] +"/since/"+ this.timestamp);
   }
