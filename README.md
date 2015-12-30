@@ -5,6 +5,9 @@ This Add-On for Firefox adds a "since"-button to the soup.io action bar.
 The button allows you to show only posts from the current post on.
 
 ##Installation
+###Via Xpi Download
+
+You can get precompiled versions of the software from the [download page](https://github.com/peacememories/soup-since/releases)
 
 ###From Source
 
@@ -25,6 +28,4 @@ The button allows you to show only posts from the current post on.
   firefox soup-since.xpi
 ```
 
-###Via Xpi Download
 
-You can get precompiled versions of the software from the [download page](https://github.com/peacememories/soup-since/releases)
