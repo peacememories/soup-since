@@ -1,0 +1,10 @@
+{
+  "description": {
+    "message": "Look only at soup entries that happened after this one.",
+    "description": "The description of the extension"
+  },
+  "read_from_here": {
+    "message": "Start reading from here",
+    "description": "Tool-Tip on the soup-since button"
+  }
+}

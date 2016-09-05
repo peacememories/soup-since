@@ -1,35 +1,29 @@
 #Soup Since
 
-This Add-On for Firefox adds a "since"-button to the soup.io action bar.
+This WebExtensions AddOn adds a "since"-button to the soup.io action bar.
 
 The button allows you to show only posts from the current post on.
 
+Click [here](https://addons.mozilla.org/en-US/firefox/addon/soup-since/) for a Firefox SDK version.
+
 ##Installation
 
-[Soup Since @ addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/soup-since/)
+This version of the Addon is currently only available in source form until it has achieved feature parity with the Firefox SDK version and is sufficiently tested.
 
+###Chrome
 
-###Via Xpi Download
+* Clone the repo
+* Go to [`chrome://extensions`](chrome://extensions) in your browser and make sure "Developer Mode" is enabled
+* Click on "Load unpacked extension" and select the folder you cloned the repo to
 
-You can get precompiled versions of the software from the [download page](https://github.com/peacememories/soup-since/releases)
+###Opera
 
-###From Source
+* Clone the repo
+* Go to [`chrome://extensions`](chrome://extensions) in your browser and make sure "Developer Mode" is enabled
+* Click on "Load unpacked extension" and select the folder you cloned the repo to
 
-####Prerequisites
-* [Mozilla Add-On SDK](https://developer.mozilla.org/en/Add-ons/SDK)
+###Firefox
 
-####Installation
-* Install the Mozilla Add-On SDK following the instructions on their site.
-* Clone the soup-since github repository.
-* Navigate to the folder.
-* Run `cxf xpi` to create the xpi file
-* Open the xpi file with Firefox
-
-```bash
-  git clone https://github.com/peacememories/soup-since.git
-  cd soup-since
-  cfx xpi
-  firefox soup-since.xpi
-```
-
-
+* Clone the repo
+* Go to [`about:debugging`](about:debugging) in your browser
+* "Click load temporary Add-on" and select the `manifest.json` file in the repo
